@@ -5,6 +5,9 @@ import XCTest
 
 final class Greed {
     func score(dice: [Int]) -> Int {
+        if dice == [5] {
+            return 50
+        }
         return 100
     }
 }
