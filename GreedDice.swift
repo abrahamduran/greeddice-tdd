@@ -14,6 +14,11 @@ final class Greed {
         else if dice == [2,2,2] {
             return 200
         }
+        else if dice == [3,3,3] {
+            return 300
+            return 200
+        }
+        
         return 100
     }
 }
@@ -66,6 +71,18 @@ final class GreedTests: XCTestCase {
         // arrange
         let expected = 200
         let dice = [2,2,2]
+        
+        // act
+        let result = _greed.score(dice: dice)
+        
+        // assert
+        XCTAssertEqual(result, expected)
+    }
+    
+    func testScore_tripleThrees_threeHundred() {
+        // arrange
+        let expected = 300
+        let dice = [3,3,3]
         
         // act
         let result = _greed.score(dice: dice)
