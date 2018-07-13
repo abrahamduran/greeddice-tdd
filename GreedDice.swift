@@ -134,4 +134,18 @@ final class GreedTests: XCTestCase {
         // assert
         XCTAssertEqual(result, expected)
     }
+    
+    func testScore_fourOfAKind_tripleScoreByTwo() {
+        // arrange
+        var number = Int(arc4random_uniform(6) + 1)
+        if number == 1 { number = 10 }
+        let expected = number*100*2
+        let dice = Array(repeating: number, count: 4)
+        
+        // act
+        let result = _greed.score(dice: dice)
+        
+        // assert
+        XCTAssertEqual(result, expected)
+    }
 }
