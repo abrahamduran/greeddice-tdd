@@ -138,15 +138,27 @@ final class GreedTests: XCTestCase {
     
     func testScore_fourOfAKind_tripleScoreByTwo() {
         // arrange
-        var number = Int(arc4random_uniform(6) + 1)
-        if number == 1 { number = 10 }
-        let expected = number*100*2
-        let dice = Array(repeating: number, count: 4)
+        var passed = false
+        var expected = 0, result = 0
+        var number = 1
         
-        // act
-        let result = _greed.score(dice: dice)
+        for i in 1...6 {
+            var _number = i
+            if i == 1 { _number = 10 }
+            let _expected = _number*100*2
+            let dice = Array(repeating: i, count: 4)
+            
+            // act
+            let _result = _greed.score(dice: dice)
+            passed = _result == _expected
+            
+            if !passed {
+                number = i ; result = _result ; expected = _expected
+                break;
+            }
+        }
         
         // assert
-        XCTAssertEqual(result, expected)
+        XCTAssert(passed, "Wrong result for \(number). Expected: \(expected), Result: \(result)")
     }
 }
