@@ -5,29 +5,16 @@ import XCTest
 
 final class Greed {
     func score(dice: [Int]) -> Int {
-        if dice == [5] {
-            return 50
-        }
-        else if dice == [1,1,1] {
-            return 1000
-        }
-        else if dice == [2,2,2] {
-            return 200
-        }
-        else if dice == [3,3,3] {
-            return 300
-        }
-        else if dice == [4,4,4] {
-            return 400
-        }
-        else if dice == [5,5,5] {
-            return 500
-        }
-        else if dice == [6,6,6] {
-            return 600
+        let uniques = Set(dice)
+        var result = 100
+        
+        if dice == [5] { result = 50 }
+        else if dice == [1,1,1] { result = 1000 }
+        else if dice.count == 3 && uniques.count == 1 {
+            result = uniques.first!*100
         }
         
-        return 100
+        return result
     }
 }
 
