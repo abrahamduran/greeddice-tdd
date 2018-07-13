@@ -29,4 +29,15 @@ final class GreedTests: XCTestCase {
         XCTAssertEqual(result, expected)
     }
     
+    func testScore_singleFive_fifty() {
+        // arrange
+        let expected = 50
+        let dice = [5]
+        
+        // act
+        let result = _greed.score(dice: dice)
+        
+        // assert
+        XCTAssertEqual(result, expected)
+    }
 }
