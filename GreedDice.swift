@@ -8,6 +8,9 @@ final class Greed {
         if dice == [5] {
             return 50
         }
+        else if dice == [1,1,1] {
+            return 1000
+        }
         return 100
     }
 }
@@ -36,6 +39,18 @@ final class GreedTests: XCTestCase {
         // arrange
         let expected = 50
         let dice = [5]
+        
+        // act
+        let result = _greed.score(dice: dice)
+        
+        // assert
+        XCTAssertEqual(result, expected)
+    }
+    
+    func testScore_tripleOnes_oneThousand() {
+        // arrange
+        let expected = 1000
+        let dice = [1,1,1]
         
         // act
         let result = _greed.score(dice: dice)
