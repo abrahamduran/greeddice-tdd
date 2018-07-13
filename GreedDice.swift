@@ -20,6 +20,9 @@ final class Greed {
         else if dice == [4,4,4] {
             return 400
         }
+        else if dice == [5,5,5] {
+            return 500
+        }
         
         return 100
     }
@@ -97,6 +100,18 @@ final class GreedTests: XCTestCase {
         // arrange
         let expected = 400
         let dice = [4,4,4]
+        
+        // act
+        let result = _greed.score(dice: dice)
+        
+        // assert
+        XCTAssertEqual(result, expected)
+    }
+    
+    func testScore_tripleFives_fiveHundred() {
+        // arrange
+        let expected = 500
+        let dice = [5,5,5]
         
         // act
         let result = _greed.score(dice: dice)
