@@ -5,18 +5,30 @@ import XCTest
 
 final class Greed {
     func score(dice: [Int]) -> Int {
+        let result = scoreForSingles(dice: dice)
+        guard let score = scoreIfTripleExists(dice: dice) else { return result }
+        if dice.count == 4 { return score * 2 }
+        
+        return score
+    }
+    
+    private func scoreForSingles(dice: [Int]) -> Int {
+        if dice == [1] { return 100 }
+        return 50
+    }
+    
+    private func scoreIfTripleExists(dice: [Int]) -> Int? {
         let uniques = Set(dice)
-        var result = 100
-        
-        if dice == [5] { result = 50 }
-        else if dice.count > 2 && uniques.count == 1 {
-            result = uniques.first!*100
-            if uniques.first == 1 { result *= 10 }
+        if dice.count > 2 && uniques.count == 1 {
+            return scoreForTriples(value: uniques.first!)
         }
-        
-        if dice.count == 4 { result *= 2 }
-        
-        return result
+        return nil
+    }
+    
+    private func scoreForTriples(value: Int) -> Int {
+        var score = value*100
+        if value == 1 { score *= 10 }
+        return score
     }
 }
 
