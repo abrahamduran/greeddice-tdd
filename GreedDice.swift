@@ -4,7 +4,9 @@ import Foundation
 import XCTest
 
 final class Greed {
-
+    func score(dice: [Int]) -> Int {
+        return 100
+    }
 }
 
 final class GreedTests: XCTestCase {
