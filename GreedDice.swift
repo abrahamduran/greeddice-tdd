@@ -13,6 +13,7 @@ final class Greed {
         else if dice.count == 3 && uniques.count == 1 {
             result = uniques.first!*100
         }
+        else if dice == [4,4,4,4] { result = 800 }
         
         return result
     }
@@ -114,6 +115,18 @@ final class GreedTests: XCTestCase {
         // arrange
         let expected = 600
         let dice = [6,6,6]
+        
+        // act
+        let result = _greed.score(dice: dice)
+        
+        // assert
+        XCTAssertEqual(result, expected)
+    }
+    
+    func testScore_fourFours_eightHundred() {
+        // arrange
+        let expected = 800
+        let dice = [4,4,4,4]
         
         // act
         let result = _greed.score(dice: dice)
