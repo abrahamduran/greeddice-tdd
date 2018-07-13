@@ -9,11 +9,12 @@ final class Greed {
         var result = 100
         
         if dice == [5] { result = 50 }
-        else if dice.count == 3 && uniques.count == 1 {
+        else if dice.count > 2 && uniques.count == 1 {
             result = uniques.first!*100
             if uniques.first == 1 { result *= 10 }
         }
-        else if dice == [4,4,4,4] { result = 800 }
+        
+        if dice.count == 4 { result *= 2 }
         
         return result
     }
